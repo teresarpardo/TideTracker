@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Tides app</string>
+    <string name="app_general_button_back">Back</string>
+    <string name="app_navigation_home">Home</string>
+    <string name="app_navigation_details">Tide details</string>
+</resources>
