@@ -1,6 +1,6 @@
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import data.TidesUseCaseImpl
+import data.TidesUseCase
 import data.model.TidesDomainModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -10,7 +10,9 @@ import network.fold
 import utils.State
 import utils.ViewState
 
-class TidesViewModel : ViewModel() {
+class TidesViewModel(
+    private val tidesUseCase: TidesUseCase
+) : ViewModel() {
 
     private val _viewState: MutableStateFlow<TidesViewState> =
         MutableStateFlow(TidesViewState.Initial)
@@ -23,7 +25,7 @@ class TidesViewModel : ViewModel() {
     private fun getTides() {
         _viewState.value = TidesViewState.Loading
         viewModelScope.launch {
-            TidesUseCaseImpl().getTides().fold(
+            tidesUseCase.getTides().fold(
                 foldFailure = ::onGetTidesFailure,
                 foldSuccess = ::onGetTidesSuccess
             )

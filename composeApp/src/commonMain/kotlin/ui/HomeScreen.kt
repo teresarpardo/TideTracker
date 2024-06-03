@@ -10,11 +10,12 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.navigation.NavController
 import nav.DashboardDirections
+import org.koin.compose.koinInject
 
 @Composable
 fun HomeScreen(
     navController: NavController,
-    viewModel: TidesViewModel
+    viewModel: TidesViewModel = koinInject()
 ) {
     val viewState = viewModel.viewState.collectAsState()
 

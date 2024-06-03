@@ -5,7 +5,7 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class TidesDTO(
-    @SerialName("mareas") val tides: TidesItemDTO,
+    @SerialName("mareas") val tides: TidesItemDTO
 )
 
 @Serializable
