@@ -1,10 +1,12 @@
 package data
 
 import data.model.TideItemDomainModel
+import data.model.TideType
 import data.model.TidesDTO
 import data.model.TidesDomainModel
 import io.ktor.client.statement.HttpResponse
 import io.ktor.client.statement.bodyAsText
+import kotlinx.datetime.LocalTime
 import kotlinx.serialization.json.Json
 import network.Result
 import network.errorHandler
@@ -36,9 +38,9 @@ class TidesDataSourceImpl : TidesDataSource {
                 date = jsonElement.tides.date,
                 data = jsonElement.tides.data.tide.map { tide ->
                     TideItemDomainModel(
-                        time = tide.time,
+                        time = LocalTime.parse(tide.time),
                         high = tide.high,
-                        type = tide.type
+                        type = TideType.fromCode(tide.type)
                     )
                 }
             )

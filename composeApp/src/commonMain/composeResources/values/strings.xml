@@ -2,6 +2,13 @@
 <resources>
     <string name="app_name">Tides app</string>
     <string name="app_general_button_back">Back</string>
-    <string name="app_navigation_home">Home</string>
+    <string name="app_navigation_home">Tide</string>
     <string name="app_navigation_details">Tide details</string>
+    <string name="app_tide_actual_header">Actual tide state:</string>
+    <string name="app_tide_harbor_title">Harbor: %1$s</string>
+    <string name="app_tide_description"> The water level is currently %1$s. There are %2$s left until %3$s tide</string>
+    <string name="app_tide_high_label">HIGH</string>
+    <string name="app_tide_low_label">LOW</string>
+    <string name="app_tide_state_rise_label">rising</string>
+    <string name="app_tide_state_decrease_label">decreasing</string>
 </resources>
