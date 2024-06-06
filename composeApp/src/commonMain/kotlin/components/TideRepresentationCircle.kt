@@ -10,12 +10,13 @@ import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Path
 import androidx.compose.ui.graphics.drawscope.clipPath
+import theme.Theme
 
 @Composable
 fun TideRepresentationCircle(
     time: Float,
-    sandColor: Color = Color.Yellow,
-    waterColor: Color = Color.Blue
+    sandColor: Color = Theme.AnimationColors.sand,
+    waterColor: Color = Theme.AnimationColors.water
 ) {
     Canvas(modifier = Modifier.fillMaxSize()) {
         val canvasWidth = size.width

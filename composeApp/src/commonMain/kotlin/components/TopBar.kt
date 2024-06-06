@@ -22,7 +22,7 @@ fun TopBar(
     modifier: Modifier = Modifier
 ) {
     TopAppBar(
-        title = { Text(text = text) },
+        title = { Text.Subtitle(text = text) },
         modifier = modifier,
         navigationIcon = {
             if (canNavigateBack) {

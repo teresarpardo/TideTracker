@@ -8,14 +8,15 @@ import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Button
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import components.InfoCard
+import components.Text
 import components.TideRepresentationCircle
 import nav.DashboardDirections
 import org.jetbrains.compose.resources.stringResource
@@ -36,7 +37,7 @@ fun HomeScreen(
         verticalArrangement = Arrangement.spacedBy(16.dp),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Text(text = stringResource(Res.string.app_tide_actual_header))
+        Text.Title(text = stringResource(Res.string.app_tide_actual_header))
 
         Box(
             modifier = Modifier
@@ -46,7 +47,7 @@ fun HomeScreen(
             TideRepresentationCircle(viewState.value.tides?.currentTide ?: 0f)
         }
 
-        Text(text = stringResource(Res.string.app_tide_harbor_title, viewState.value.tides?.harbor.orEmpty()))
+        Text.Subtitle(text = stringResource(Res.string.app_tide_harbor_title, viewState.value.tides?.harbor.orEmpty()))
 
         viewState.value.tides?.nextTide?.type?.let { tide ->
             InfoCard(
@@ -59,7 +60,11 @@ fun HomeScreen(
         Button(
             onClick = { navController.navigate(DashboardDirections.DETAILS.name) }
         ) {
-            Text("Navigate to weather details")
+            Text.Description(
+                modifier = Modifier.fillMaxWidth(),
+                text = "Navigate to weather details",
+                textAlign = TextAlign.Center
+            )
         }
     }
 }

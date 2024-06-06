@@ -29,7 +29,10 @@ fun InfoCard(
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center
         ) {
-            Text(text = stringResource(Res.string.app_tide_description, state, time, name))
+            Text.Description(
+                modifier = modifier.fillMaxWidth(),
+                text = stringResource(Res.string.app_tide_description, state, time, name)
+            )
         }
     }
 }
