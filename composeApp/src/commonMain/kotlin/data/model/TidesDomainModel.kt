@@ -1,17 +1,16 @@
 package data.model
 
-import androidx.compose.runtime.Composable
 import kotlinx.datetime.LocalTime
 import kotlinx.serialization.Contextual
 import kotlinx.serialization.Serializable
 import org.jetbrains.compose.resources.StringResource
-import org.jetbrains.compose.resources.stringResource
-import tidesappkmp.composeapp.generated.resources.Res
-import tidesappkmp.composeapp.generated.resources.app_tide_high_label
-import tidesappkmp.composeapp.generated.resources.app_tide_low_label
-import tidesappkmp.composeapp.generated.resources.app_tide_state_decrease_label
-import tidesappkmp.composeapp.generated.resources.app_tide_state_rise_label
+import tidetracker.composeapp.generated.resources.Res
+import tidetracker.composeapp.generated.resources.app_tide_high_label
+import tidetracker.composeapp.generated.resources.app_tide_low_label
+import tidetracker.composeapp.generated.resources.app_tide_state_decrease_label
+import tidetracker.composeapp.generated.resources.app_tide_state_rise_label
 import utils.TimeUtils
+import kotlin.time.Duration
 
 @Serializable
 data class TidesDomainModel(
@@ -43,6 +42,8 @@ data class TideItemDomainModel(
     val type: TideType
 ) {
     val remainingTime get() = TimeUtils.remainingTime(endTime = time)
+
+    val remainingTimeText: Duration get() = remainingTime
 }
 
 @Serializable
@@ -51,26 +52,9 @@ sealed class TideType(
     @Contextual val stateResId: StringResource,
     @Contextual val nameResId: StringResource
 ) {
-
     class High : TideType(HIGH_TIDE, Res.string.app_tide_state_rise_label, Res.string.app_tide_high_label)
 
     class Low : TideType(LOW_TIDE, Res.string.app_tide_state_decrease_label, Res.string.app_tide_low_label)
-
-    @Composable
-    fun getState() = stringResource(
-        when (this) {
-            is High -> Res.string.app_tide_state_rise_label
-            is Low -> Res.string.app_tide_state_decrease_label
-        }
-    )
-
-    @Composable
-    fun getName() = stringResource(
-        when (this) {
-            is High -> Res.string.app_tide_high_label
-            is Low -> Res.string.app_tide_low_label
-        }
-    )
 
     companion object {
         private const val HIGH_TIDE = "pleamar"
