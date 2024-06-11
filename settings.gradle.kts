@@ -1,4 +1,4 @@
-rootProject.name = "TidesAppKMP"
+rootProject.name = "TideTracker"
 enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 
 pluginManagement {

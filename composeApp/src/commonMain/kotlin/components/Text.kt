@@ -16,8 +16,8 @@ object Text {
         Text(
             modifier = modifier,
             text = text,
-            style = Theme.Typography.headlineLarge,
-            textAlign = textAlign
+            textAlign = textAlign,
+            style = Theme.Typography.titleMedium
         )
     }
 
@@ -30,8 +30,8 @@ object Text {
         Text(
             modifier = modifier,
             text = text,
-            style = Theme.Typography.titleLarge,
-            textAlign = textAlign
+            textAlign = textAlign,
+            style = Theme.Typography.headlineMedium
         )
     }
 
@@ -44,8 +44,8 @@ object Text {
         Text(
             modifier = modifier,
             text = text,
-            style = Theme.Typography.bodyMedium,
-            textAlign = textAlign
+            textAlign = textAlign,
+            style = Theme.Typography.bodyMedium
         )
     }
 
@@ -58,8 +58,8 @@ object Text {
         Text(
             modifier = modifier,
             text = text,
-            style = Theme.Typography.labelSmall,
-            textAlign = textAlign
+            textAlign = textAlign,
+            style = Theme.Typography.labelMedium
         )
     }
 }

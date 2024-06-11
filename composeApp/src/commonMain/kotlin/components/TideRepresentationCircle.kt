@@ -15,8 +15,8 @@ import theme.Theme
 @Composable
 fun TideRepresentationCircle(
     time: Float,
-    sandColor: Color = Theme.AnimationColors.sand,
-    waterColor: Color = Theme.AnimationColors.water
+    sandColor: Color = Theme.CustomColors.animation.sand,
+    waterColor: Color = Theme.CustomColors.animation.water
 ) {
     Canvas(modifier = Modifier.fillMaxSize()) {
         val canvasWidth = size.width

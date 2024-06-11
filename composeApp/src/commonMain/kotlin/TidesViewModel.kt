@@ -18,11 +18,7 @@ class TidesViewModel(
         MutableStateFlow(TidesViewState.Initial)
     val viewState: StateFlow<TidesViewState> get() = _viewState
 
-    init {
-        getTides()
-    }
-
-    private fun getTides() {
+    fun getTides() {
         _viewState.value = TidesViewState.Loading
         viewModelScope.launch {
             tidesUseCase.getTides().fold(

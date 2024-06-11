@@ -5,11 +5,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Typography
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
-import androidx.compose.runtime.ProvidedValue
 import androidx.compose.runtime.staticCompositionLocalOf
-import theme.colors.AnimationColors
-import theme.colors.animationColors
-import theme.colors.colorScheme
 
 @Composable
 fun Theme(
@@ -17,28 +13,21 @@ fun Theme(
     content: @Composable () -> Unit
 ) {
     CompositionLocalProvider(
-        *setupCompositionLocals(darkTheme)
+        localTypographySystem provides typography(),
+        localCustomColorsSystem provides customColors(darkTheme)
     ) {
         MaterialTheme(
-            colorScheme = colorScheme(darkTheme),
+            colorScheme = Theme.CustomColors.colorScheme,
             typography = Theme.Typography,
             content = content
         )
     }
 }
 
-fun setupCompositionLocals(darkTheme: Boolean): Array<ProvidedValue<out Any>> {
-    return arrayOf(
-        localColorsSystem provides animationColors(darkTheme),
-        localTypographySystem provides typography()
-    )
-}
-
 object Theme {
     val Typography @Composable get() = localTypographySystem.current
-    val AnimationColors @Composable get() = localColorsSystem.current
+    val CustomColors @Composable get() = localCustomColorsSystem.current
 }
 
-private val localColorsSystem = staticCompositionLocalOf<AnimationColors> { error("Animation colors error") }
-
 private val localTypographySystem = staticCompositionLocalOf<Typography> { error("Typography error") }
+private val localCustomColorsSystem = staticCompositionLocalOf<CustomColors> { error("Custom colors error") }
